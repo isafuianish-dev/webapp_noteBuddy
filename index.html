@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Note Buddy</title>
+<link rel="icon" type="image/png" href="media/favicon.png">
+<link rel="stylesheet" href="https://isafuianish-dev.github.io/webapp_cdnBuddy/css/tokens.css">
+<link rel="stylesheet" href="https://isafuianish-dev.github.io/webapp_cdnBuddy/css/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/theme-init.js" data-app="webapp_noteBuddy"></script>
+</head>
+<body>
+<div class="app">
+  <header class="topbar">
+    <div class="topbar-brand">
+      <span class="brand-icon" aria-hidden="true"><span class="icon" style="-webkit-mask-image:url(media/icon.svg);mask-image:url(media/icon.svg);"></span></span>
+      <h1>Note Buddy</h1>
+    </div>
+    <div class="topbar-actions">
+      <button id="btnSettings" class="btn btn-ghost btn-icon" title="Settings" aria-label="Settings"></button>
+    </div>
+  </header>
+
+  <div class="layout">
+    <aside class="panel panel-notes">
+      <div class="panel-header">
+        <input type="search" id="noteSearch" class="search-input" placeholder="Search" aria-label="Search notes">
+        <div class="panel-header-actions">
+          <button type="button" id="btnNewNote" class="btn btn-primary">New Note</button>
+          <button id="btnExportAll" class="btn btn-ghost btn-icon" title="Export all notes as JSON" aria-label="Export notes"></button>
+          <label class="btn btn-ghost btn-icon file-btn" title="Import notes from JSON" aria-label="Import notes">
+            <span class="file-btn-icon" id="fileBtnIcon"></span>
+            <input type="file" id="fileImportData" accept="application/json">
+          </label>
+        </div>
+      </div>
+      <ul id="noteList" class="note-list"></ul>
+      <p id="noteListEmpty" class="empty-hint" hidden></p>
+    </aside>
+
+    <main class="panel panel-editor">
+      <div class="empty-state" id="emptyState"></div>
+
+      <div class="editor" id="editor" hidden>
+        <div class="editor-header">
+          <input type="text" id="noteTitleInput" class="editor-title-input" placeholder="Untitled note" autocomplete="off">
+          <div class="editor-header-actions">
+            <span class="word-count-badge" id="wordCount">0 words</span>
+            <button type="button" id="btnToggleView" class="btn btn-ghost btn-icon" title="Toggle preview" aria-label="Toggle preview" aria-pressed="false"></button>
+            <button type="button" id="btnDeleteNote" class="btn btn-ghost btn-icon" title="Delete note" aria-label="Delete note"></button>
+          </div>
+        </div>
+
+        <div class="md-toolbar" id="mdToolbar">
+          <div class="md-toolbar-group">
+            <button type="button" class="md-toolbar-btn" data-action="bold" title="Bold (Ctrl+B)" aria-label="Bold"></button>
+            <button type="button" class="md-toolbar-btn" data-action="italic" title="Italic (Ctrl+I)" aria-label="Italic"></button>
+            <button type="button" class="md-toolbar-btn" data-action="strike" title="Strikethrough" aria-label="Strikethrough"></button>
+          </div>
+          <div class="md-toolbar-divider"></div>
+          <div class="md-toolbar-group">
+            <button type="button" class="md-toolbar-btn md-toolbar-btn-text" data-action="h1" title="Heading 1">H1</button>
+            <button type="button" class="md-toolbar-btn md-toolbar-btn-text" data-action="h2" title="Heading 2">H2</button>
+            <button type="button" class="md-toolbar-btn md-toolbar-btn-text" data-action="h3" title="Heading 3">H3</button>
+          </div>
+          <div class="md-toolbar-divider"></div>
+          <div class="md-toolbar-group">
+            <button type="button" class="md-toolbar-btn" data-action="link" title="Link (Ctrl+K)" aria-label="Insert link"></button>
+            <button type="button" class="md-toolbar-btn" data-action="code" title="Code" aria-label="Code"></button>
+            <button type="button" class="md-toolbar-btn" data-action="quote" title="Quote" aria-label="Quote"></button>
+          </div>
+          <div class="md-toolbar-divider"></div>
+          <div class="md-toolbar-group">
+            <button type="button" class="md-toolbar-btn" data-action="ul" title="Bullet list" aria-label="Bullet list"></button>
+            <button type="button" class="md-toolbar-btn" data-action="ol" title="Numbered list" aria-label="Numbered list"></button>
+            <button type="button" class="md-toolbar-btn" data-action="hr" title="Horizontal rule" aria-label="Horizontal rule"></button>
+          </div>
+        </div>
+
+        <div class="editor-body" id="editorBody">
+          <textarea id="noteSource" class="note-source" placeholder="Write in Markdown..." spellcheck="true"></textarea>
+          <div id="notePreview" class="note-preview markdown-body" hidden></div>
+
+          <div class="autocomplete-popover" id="wordSuggestPopover" hidden></div>
+          <div class="autocomplete-popover" id="linkSuggestPopover" hidden></div>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/utils.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/icons.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/modal.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/theme.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/settings.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/markdown.js"></script>
+<script src="https://isafuianish-dev.github.io/webapp_cdnBuddy/js/manual.js"></script>
+<script src="script.js"></script>
+</body>
+</html>
